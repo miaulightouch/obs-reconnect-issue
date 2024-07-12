@@ -61,17 +61,20 @@ void createAndStartOutput(bool bad)
 	obs_data_set_int(videoOptions, "keyint_sec", 1);
 	obs_data_set_string(videoOptions, "tune", "zerolatency");
 	obs_encoder_t *videoEncoder = obs_video_encoder_create(
-		"obs_x264", bad ? "bad_video_encoder" : "good_video_encoder", videoOptions,
-		NULL);
+		"obs_x264", bad ? "bad_video_encoder" : "good_video_encoder",
+		videoOptions, NULL);
 	if (!videoEncoder) {
 		obs_log(LOG_ERROR, "Failed to create video encoder");
 		return;
 	}
 	obs_encoder_set_scaled_size(videoEncoder, 640, 360);
-	// Set the video encoder to use the GPU scaling if this is bad output
+
+	///////////////////////////
+	// BUG: Set the video encoder to use the GPU scaling if this is bad output
 	if (bad)
 		obs_encoder_set_gpu_scale_type(videoEncoder,
 					       OBS_SCALE_BILINEAR);
+	///////////////////////////
 
 	obs_view_t *view = obs_view_create();
 	obs_view_set_source(view, 0, obs_scene_get_source(scene));
@@ -85,8 +88,8 @@ void createAndStartOutput(bool bad)
 
 	// Create a new audio encoder
 	obs_encoder_t *audioEncoder = obs_audio_encoder_create(
-		"ffmpeg_aac", bad ? "bad_audio_encoder" : "good_audio_encoder", NULL,
-		0, NULL);
+		"ffmpeg_aac", bad ? "bad_audio_encoder" : "good_audio_encoder",
+		NULL, 0, NULL);
 	if (!audioEncoder) {
 		obs_log(LOG_ERROR, "Failed to create audio encoder");
 		return;
