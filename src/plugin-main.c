@@ -26,11 +26,11 @@ OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 obs_scene_t *scene = 0;
 
-bool flipAnything(obs_scene_t *scene, obs_sceneitem_t *item, void *param)
+bool flipAnything(obs_scene_t *s, obs_sceneitem_t *item, void *param)
 {
 	obs_sceneitem_set_rot(item, 180);
 	obs_sceneitem_set_alignment(item, OBS_ALIGN_BOTTOM | OBS_ALIGN_RIGHT);
-	UNUSED_PARAMETER(scene);
+	UNUSED_PARAMETER(s);
 	UNUSED_PARAMETER(param);
 
 	return true;
