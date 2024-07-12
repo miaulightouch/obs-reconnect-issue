@@ -70,7 +70,7 @@ void createAndStartOutput(bool bad)
 	obs_encoder_set_scaled_size(videoEncoder, 640, 360);
 
 	///////////////////////////
-	// BUG: Set the video encoder to use the GPU scaling if this is bad output
+	// FIXME: Set the video encoder to use the GPU scaling if this is bad output
 	if (bad)
 		obs_encoder_set_gpu_scale_type(videoEncoder,
 					       OBS_SCALE_BILINEAR);
