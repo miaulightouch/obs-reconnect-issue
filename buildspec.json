@@ -33,14 +33,14 @@
     },
     "platformConfig": {
         "macos": {
-            "bundleId": "com.example.obs-plugintemplate"
+            "bundleId": "com.miaulightouch.obs-reconnect-issue"
         }
     },
-    "name": "obs-plugintemplate",
-    "displayName": "OBS Plugin Template",
+    "name": "obs-reconnect-issue",
+    "displayName": "OBS Plugin for Reconnect Issue",
     "version": "1.0.0",
-    "author": "Your Name Here",
-    "website": "https://example.com",
+    "author": "MiauLightouch",
+    "website": "https://github.com/miaulightouch",
     "email": "me@example.com",
     "uuids": {
         "windowsApp": "00000000-0000-0000-0000-000000000000"
